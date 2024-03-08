@@ -1,4 +1,4 @@
-This is my pipeline script pipeline {
+pipeline {
     agent any
 
     stages {
