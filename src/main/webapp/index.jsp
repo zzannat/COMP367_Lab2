@@ -17,7 +17,7 @@
             }
 
             var name = prompt("Please enter your name:");
-            var message = greeting + ", " + (name ? name : "Zohra") + ", Welcome to COMP367";
+            var message = greeting + ", " + (name ? name : "Guest") + ", Welcome to COMP367";
             document.getElementById("greeting").innerText = message;
         }
     </script>
