@@ -1,4 +1,5 @@
 <html>
+<<<<<<< HEAD
 <head>
     <title>Welcome to COMP367</title>
     <script>
@@ -24,5 +25,10 @@
 <body onload="displayGreeting()">
     <h2 id="greeting"></h2>
 
+=======
+<body>
+<h2>Welcome to COMP367</h2>
+<p> Testing webhook again</p>
+>>>>>>> a4daa7326598712f31ac6245cdb7eb533d9ce3b5
 </body>
 </html>
