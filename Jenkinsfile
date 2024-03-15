@@ -20,17 +20,17 @@ pipeline {
         stage('Build Maven Project') {
             steps {
                 // Build Maven project
-                sh 'mvn clean install'
+                bat "mvn clean install"
             }
         }
         stage('Unit test'){
             steps{
-                sh 'mvn test'
+                bat "mvn test"
             }
         }
         stage('Jacoco: Report'){
             steps{
-                sh 'mvn clean verify jacoco:report'
+                bat "mvn clean verify jacoco:report"
                 
                  jacoco(execPattern: '**/target/*.exec')
             }
@@ -38,7 +38,7 @@ pipeline {
         stage('Docker Build'){
             steps{
                 script{
-                    sh 'docker build -t my_maven_webapp_image .'
+                    bat "docker build -t my_maven_webapp_image ."
                 }
             }
         }
@@ -46,14 +46,14 @@ pipeline {
             steps{
                 //Login to Docker Hub
                 script{
-                    sh "docker login -u zzannat -p '${DOCKERHUB_PWD}'"
+                    bat "docker login -u zzannat -p '${DOCKERHUB_PWD}'"
                 }
             }
         }
         stage('Docker Push'){
             steps{
                 //push docker image to docker hub
-                sh 'docker push zzannat/my_maven_webapp_image'
+                bat "docker push zzannat/my_maven_webapp_image"
             }
         }
     }    
