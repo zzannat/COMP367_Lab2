@@ -30,9 +30,7 @@ pipeline {
         }
         stage('Jacoco: Report'){
             steps{
-                bat "mvn clean verify jacoco:report"
-                
-                 jacoco(execPattern: '**/target/*.exec')
+                bat "mvn jacoco:report"
             }
         }
         stage('Docker Build'){
