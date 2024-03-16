@@ -28,11 +28,6 @@ pipeline {
                 bat "mvn test"
             }
         }
-        stage('Jacoco: Report'){
-            steps{
-                bat "mvn jacoco:report"
-            }
-        }
         stage('Docker Build'){
             steps{
                 script{
@@ -54,5 +49,10 @@ pipeline {
                 bat "docker push zzannat/my_maven_webapp_image"
             }
         }
-    }    
+    }
+    post{
+        always{
+            jacoco(execPattern: '**/target/*.exec')
+        }
+    }
 }
