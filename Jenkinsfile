@@ -5,9 +5,6 @@ pipeline {
         // Install the Maven version configured as "MAVEN3" and add it to the path.
         maven "MAVEN3"
     }
-    environment{
-        DOCKERHUB_PWD=credentials('CredentialID_DockerHubPWD')
-    }
 
     stages {
         stage('Check out') {
@@ -45,7 +42,7 @@ pipeline {
             steps{
                 //Login to Docker Hub
                 script{
-                    bat "docker login -u zzannat -p '${DOCKERHUB_PWD}'"
+                    bat "docker login -u zzannat -p 12345678Rk"
                 }
             }
         }
