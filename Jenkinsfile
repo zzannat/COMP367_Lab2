@@ -49,7 +49,7 @@ pipeline {
         stage('Docker Push'){
             steps{
                 //push docker image to docker hub
-                bat "docker push latest"
+                bat "docker push my_maven_webapp_image"
             }
         }
     }    
