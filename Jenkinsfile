@@ -5,6 +5,9 @@ pipeline {
         // Install the Maven version configured as "MAVEN3" and add it to the path.
         maven "MAVEN3"
     }
+    environment{
+        DOCKERHUB_PWD=credentials('CredentialID_DockerHubPWD')
+    }
 
     stages {
         stage('Check out') {
@@ -42,14 +45,14 @@ pipeline {
             steps{
                 //Login to Docker Hub
                 script{
-                    bat "docker login -u zzannat -p 12345678Rk"
+                    bat "docker login -u zzannat -p '${DOCKERHUB_PWD}'"
                 }
             }
         }
         stage('Docker Push'){
             steps{
                 //push docker image to docker hub
-                bat "docker push my_maven_webapp_image:latest"
+                bat "docker push zzannat/my_maven_webapp_image"
             }
         }
     }    
