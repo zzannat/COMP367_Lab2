@@ -49,7 +49,7 @@ pipeline {
         stage('Docker Push'){
             steps{
                 //push docker image to docker hub
-                bat "docker push zzannat/my_maven_webapp_image:ac090b29b66ab1856c92058ebc14f915ed334c7444b02165087c35ce583e5629"
+                bat "docker push latest"
             }
         }
     }    
