@@ -6,7 +6,7 @@ pipeline {
         maven "MAVEN3"
     }
     environment{
-        DOCKERHUB_PWD=credentials('CredentialID_DockerHubPWD')
+        DOCKERHUB_USER = 'zzannat'
     }
 
     stages {
@@ -45,7 +45,8 @@ pipeline {
             steps{
                 //Login to Docker Hub
                 script{
-                    bat "docker login -u zzannat -p '${DOCKERHUB_PWD}'"
+                    withCredentials([usernamePassword(credentialsId: 'CredentialID_DockerHub', usernameVariable: 'DOCKERHUB_USER', passwordVariable: 'DOCKERHUB_PWD')]) {
+                    bat "echo ${DOCKERHUB_PWD} | docker login -u ${DOCKERHUB_USER} --password-stdin"
                 }
             }
         }
